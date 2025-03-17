@@ -27,10 +27,11 @@ Docker and system monitoring |	179	 | Stats Docker + host server |
 Kubernetes cAdvisor Metrics	| 13619	| special Kubernetes |
 Docker Containers Metrics	| 12308	| Metrics Details per container |
 
-Check whether a [prometheus scraping operate well or fail](http://localhost:9090/targets) :
-And we can see this :
+Check whether a [prometheus scraping operate well or fail](http://localhost:9090/targets).
+
+And we can see what happens:
 ![alt text](assets/images/target-endpoint-overview.png)
 
-We can see bellow an overview of monotoring with grafana that visualize data scraped by prometheus from difference data sources defined in ``prometheus.yml`` file:
+We can also see below an overview of monotoring with grafana that visualize data scraped by prometheus from difference data sources defined in ``prometheus.yml`` file.
 
-[📹 Watch video](assets/videos/prometheus-grafana-operating.mp4)
+Let download and watch: [📹 Watch video](assets/videos/prometheus-grafana-operating.mp4).
