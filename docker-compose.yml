@@ -1,0 +1,37 @@
+
+version: '3.9'
+
+services:
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - "9100:9100"
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    ports:
+      - "8081:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+
+  prometheus:
+      image: prom/prometheus:latest
+      volumes:
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
+      ports:
+        - "9090:9090"
+      depends_on:
+        - cadvisor
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=$GRAFANA_PASSWORD
+    depends_on:
+      - cadvisor
+      - prometheus

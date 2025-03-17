@@ -1,0 +1,11 @@
+groups:
+  - name: alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) < 0.2
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU Usage High"
+          description: "CPU usage  greater than 80% for 2 minutes."

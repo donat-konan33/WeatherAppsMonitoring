@@ -6,8 +6,9 @@ authors = [
     {name = "donatien konan",email = "donatien.konan.pro@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.9,<3.9.7 || >3.9.7,<3.13"
 dependencies = [
+    "prometheus-client (>=0.21.1,<0.22.0)"
 ]
 
 
